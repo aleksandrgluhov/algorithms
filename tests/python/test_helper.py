@@ -1,27 +1,12 @@
-# -*- coding: utf-8 -*-
-"""
-    Helper classes and functions for algorithmic cases
-    with unit tests, jff
-    Gluhov Alex
-"""
-# --------------- imports --------------
+#!/usr/bin/python3
+
+# imports
 import random
 import unittest
+from python.helper import rand_int_list
 
 
-# ------ procedures and functions ------
-def rand_int_list(start, end, count):
-    """
-    Function, generates a list filled with random ints
-    :param start: low border (int)
-    :param end: high border (int)
-    :param count: list size (int)
-    :return: list
-    """
-    return [random.randint(start, end) for i in range(0, count)]
-
-
-# --------------- classes --------------
+# classes
 class TestRandList(unittest.TestCase):
     """
     Unit test for the rand_int_list function
@@ -32,6 +17,9 @@ class TestRandList(unittest.TestCase):
         low border, high border, list size and creates the list
         :return:
         """
+
+        # init random generator
+        random.seed()
         self.list_min_val = 11
         self.list_max_val = 999
         self.list_size = 30
@@ -56,9 +44,3 @@ class TestRandList(unittest.TestCase):
             self.assertIsInstance(test_val, int)
             self.assertGreaterEqual(test_val, self.list_min_val)
             self.assertLessEqual(test_val, self.list_max_val)
-
-
-# --------- program entry point --------
-if __name__ == '__main__':
-    random.seed()
-    unittest.main()
